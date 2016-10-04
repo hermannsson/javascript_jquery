@@ -1,15 +1,37 @@
 
 $(document).ready(function() {
 
-  createGrid(25);
+  createNew();
 
-  
-  $(".grid").hover(function(){
+  var newGridButton = document.getElementById('newGridButton');
 
-    $(this).css("background-color", "red");
+  newGridButton.addEventListener('click', function() {
+    clearGrid();
+    createNew();
+  }, false);
+
+  function clearGrid() {
+    $("#wrapper").empty();
+    $("#wrapper").css({
+      "background-color": "white"
+    });
+
+  }
+
+  function addFunctionality(color) {
+
+    $(".grid").hover(function(){
+
+    $(this).css("background-color", color);
     
   });
 
+  }
+
+  function createNew() {
+    var num = prompt("Enter grid size:");
+    createGrid(num);
+  }
 
   function createGrid(num) {
 
@@ -20,6 +42,10 @@ $(document).ready(function() {
       $("#wrapper").append(nextDiv);
 
     }
+
+    addFunctionality("pink");
+    
+  
   }
 
 
